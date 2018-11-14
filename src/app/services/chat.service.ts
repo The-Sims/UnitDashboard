@@ -2,32 +2,28 @@ import { Injectable } from '@angular/core';
 import {Observable,Subject} from 'rxjs';
 import {WebsocketService} from './websocket.service';
 import 'rxjs/add/operator/map'
+import {Message} from '../models/Message';
 
 
 
-const CHAT_URL='ws://145.93.112.154:8095/unitmanagerserver/websocket/';
+const CHAT_URL='ws://145.93.113.53:8095/unitmanagerserver/websocket/';
 
-export interface Message {
 
-    message: string
-
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  public  messages: Subject<Message>;
 
+  public  messages: Subject<Object>;
+  private message: Message
   constructor(wsService: WebsocketService) {
 
-      this.messages = <Subject<Message>>wsService
+      this.messages = <Subject<Object>>wsService
           .connect(CHAT_URL)
-          .map((response: MessageEvent): Message => {
-              let data = JSON.stringify(response.data);
-              return {
-                  message: data
-              }
+          .map((response: MessageEvent): Object =>  {
+              let data = JSON.parse(response.data);
+              return {object: data}
           });
 
   }
