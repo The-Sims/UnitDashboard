@@ -3,10 +3,11 @@ import {Observable,Subject} from 'rxjs';
 import {WebsocketService} from './websocket.service';
 import 'rxjs/add/operator/map'
 import {Message} from '../models/Message';
+import {EncapsulatingMessage} from "../../messages/EncapsulatingMessage";
 
 
 
-const CHAT_URL='ws://145.93.113.53:8095/unitmanagerserver/websocket/';
+const CHAT_URL='ws:/localhost:8095/unitmanagerserver/websocket/';
 
 
 
@@ -14,17 +15,16 @@ const CHAT_URL='ws://145.93.113.53:8095/unitmanagerserver/websocket/';
   providedIn: 'root'
 })
 export class ChatService {
+  public  messages: Subject<EncapsulatingMessage>;
 
-  public  messages: Subject<Object>;
-  private message: Message
   constructor(wsService: WebsocketService) {
-
-      this.messages = <Subject<Object>>wsService
-          .connect(CHAT_URL)
-          .map((response: MessageEvent): Object =>  {
-              let data = JSON.parse(response.data);
-              return {object: data}
-          });
+    this.messages = <Subject<EncapsulatingMessage>>wsService
+      .connect(CHAT_URL)
+      .map((response: MessageEvent): EncapsulatingMessage => {
+        console.log(response.data)
+        let msg = new EncapsulatingMessage(JSON.parse(response.data));
+        return msg;
+      });
 
   }
 }
