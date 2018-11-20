@@ -1,3 +1,22 @@
-<p>
-  home works!
-</p>
+<div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="hidden">Id</th>
+    <th>Locatie</th>
+    <th>Beschrijving</th>
+    <th>Actie</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="orders != null">
+
+  <tr *ngFor="let order of orders">
+    <td class="hidden">{{order.orderId}}</td>
+    <td>{{order.orderLocation}}</td>
+    <td>{{order.orderTitle}}</td>
+    <td><button class="btn btn-danger" (click)="AcceptOrder(order)"> Delete</button>
+      <button class="btn btn-danger" (click)="DeclineOrder(order)" style="margin-left: 20px;"> Edit</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>

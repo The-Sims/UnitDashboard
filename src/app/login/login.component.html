@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<form (ngSubmit)="onSubmit()">
+  <tr>
+    <td>
+      <div class="form-group" style="text-align: center">
+      <input formControl="email" placeholder="Email" class="form-control" name="email" id="email" required>
+      </div>
+    </td>
+  </tr>
+  <div>
+    <tr>
+      <div style="text-align: center">
+        <input mat-raised-button color="primary" type="submit" />
+      </div>
+
+    </tr>
+  </div>
+
+</form>
