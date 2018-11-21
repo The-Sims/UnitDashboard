@@ -1,31 +1,9 @@
 import {HomeComponent} from "../home/home.component";
 
 export  class  Order {
-    get timerend(): boolean {
-        if (!this._accepted){
-            this._timer--;
-            if (this._timer<0)
-                return true;
-        }
-        return false;
-    }
-    private _timerend:boolean= false
 
-    get orderId(): number {
-        return this._orderId;
-    }
 
-    get operaterId(): string {
-        return this._operaterId;
-    }
 
-    get orderTitle(): string {
-        return this._orderTitle;
-    }
-
-    get orderLocation(): string {
-        return this._orderLocation;
-    }
     constructor(orderId: number, operaterId: string, orderTitle: string, orderLocation: string) {
 
         this._orderId = orderId;
@@ -42,4 +20,31 @@ export  class  Order {
     private _timer:number=30
 
 
+    set accepted(value: boolean) {
+        this._accepted = value;
+    }
+    get orderId(): number {
+        return this._orderId;
+    }
+
+    get operaterId(): string {
+        return this._operaterId;
+    }
+
+    get orderTitle(): string {
+        return this._orderTitle;
+    }
+
+    get orderLocation(): string {
+        return this._orderLocation;
+    }
+    get timerend(): boolean {
+        if (!this._accepted){
+            this._timer--;
+            if (this._timer<0)
+                return true;
+        }
+        return false;
+    }
+    private _timerend:boolean= false
 }

@@ -8,14 +8,14 @@ import {ChatService} from "./chat.service";
 export class MessageSenderService {
   private chat :ChatService;
   constructor() {
-      this.chat = new ChatService()
+      //this.chat = new ChatService()
   }
-    sendMsg(msg: object) {
-        console.log('new msg from client to web')
-        let message = new EncapsulatingMessage(null);
-        message.setMessageType = msg.constructor.name;
-        message.setMessageData = JSON.stringify(msg);
-        this.chat.messages.next(message);
-    }
+    // sendMsg(msg: object) {
+    //     console.log('new msg from client to web')
+    //     let message = new EncapsulatingMessage(null);
+    //     message.setMessageType = msg.constructor.name;
+    //     message.setMessageData = JSON.stringify(msg);
+    //     this.chat.messages.next(message);
+    // }
 
 }
