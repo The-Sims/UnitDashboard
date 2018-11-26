@@ -10,6 +10,7 @@ import {FormControl} from "@angular/forms";
 import {MessageRegister} from "../messages/MessageRegister";
 import {MessageSenderService} from "./services/message-sender.service";
 import index from "@angular/cli/lib/cli";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class AppComponent {
     orders:Order[]=[];
 
 
-  constructor(private chat:ChatService) {
+  constructor(private chat:ChatService,private router: Router) {
       chat.messages.subscribe(msg => {
           console.log(msg.getMessageType)
           console.log(msg.getMessageData)
@@ -68,6 +69,7 @@ export class AppComponent {
     }
 
     AcceptOrder(order:Order){
+        this.router.navigate(['/order']);
         order.accepted = true;
         let obj = new MessageConfirmOrder(order.operaterId, order.orderId, "Accepted.", true);
         this.chat.sendMsg(obj)

@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {DatePipe} from "@angular/common";
-import {routing} from "./app-routing.module";
+import { AppRoutingModule} from "./app-routing.module";
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -13,12 +14,13 @@ import {routing} from "./app-routing.module";
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
       HttpClientModule,
-      routing
+      AppRoutingModule
   ],
   providers: [DatePipe,HomeComponent,AppComponent],
   bootstrap: [AppComponent]

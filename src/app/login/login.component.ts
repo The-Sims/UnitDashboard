@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
       let obj = new MessageRegister(this.email.value);
-      this.messageSender.sendMsg(obj)
+      //this.messageSender.sendMsg(obj)
   }
   ngOnInit() {
   }

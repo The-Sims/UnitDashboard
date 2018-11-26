@@ -10,7 +10,7 @@ import {HomeComponent} from "../home/home.component";
 import {AppComponent} from "../app.component";
 
 
-const CHAT_URL = 'ws:/145.93.113.127:8095/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws:/145.93.113.9:8095/unitmanagerserver/websocket/';
 
 
 @Injectable({
