@@ -1,38 +1,3 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <router-outlet></router-outlet>
-<div style="text-align: center">
-  <h1>
-    Dienst web
-  </h1>
-  <input formControl="email" placeholder="Username" class="form-control" name="email" id="email" required #email>
-
-  <button type="submit" (click)="sendLogin(email.value)"> Login</button>
-</div>
-<div style="text-align: center">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th class="hidden">Id</th>
-      <th>Locatie</th>
-      <th>Beschrijving</th>
-      <th>Actie</th>
-    </tr>
-    </thead>
-    <tbody *ngIf="orders.length != null">
-
-    <tr *ngFor="let order of orders">
-      <td>{{order.orderLocation}}</td>
-      <td>{{order.orderTitle}}</td>
-      <td>
-        <button class="btn btn-danger" (click)="AcceptOrder(order)"> Accept</button>
-        <button class="btn btn-danger" (click)="DeclineOrder(order,reason.value)"  style="margin-left: 20px;"> Decline</button></td>
-    </tr>
-
-
-
-    </tbody>
-  </table>
-</div>
-<div><textarea ng-model="myTextarea" formControl="email" placeholder="Reden" class="form-control" name="reason" id="reason" #reason></textarea>
-</div>

@@ -4,9 +4,7 @@ import { Observable} from 'rxjs';
 import { Observer} from 'rxjs';
 import * as Rx from 'rxjs/Rx';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WebsocketService {
 
   constructor() { }

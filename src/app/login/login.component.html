@@ -1,18 +1,8 @@
-<form (ngSubmit)="onSubmit()">
-  <tr>
-    <td>
-      <div class="form-group" style="text-align: center">
-      <input formControl="email" placeholder="Email" class="form-control" name="email" id="email" required>
-      </div>
-    </td>
-  </tr>
-  <div>
-    <tr>
-      <div style="text-align: center">
-        <input mat-raised-button color="primary" type="submit" />
-      </div>
+<div style="text-align: center">
+  <h1>
+    Dienst web
+  </h1>
+  <input formControl="email" placeholder="Username" class="form-control" name="email" id="email" required #email>
 
-    </tr>
-  </div>
-
-</form>
+  <button type="submit" (click)="sendLogin(email.value)"> Login</button>
+</div>

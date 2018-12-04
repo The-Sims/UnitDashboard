@@ -4,11 +4,13 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import {DatePipe} from "@angular/common";
-import { AppRoutingModule} from "./app-routing.module";
+import { DatePipe } from "@angular/common";
+import { AppRoutingModule } from "./app-routing.module";
 import { OrderComponent } from './order/order.component';
-
-
+import { ChatService } from "./services/chat.service";
+import { WebsocketService} from "./services/websocket.service";
+import { TipService } from "./services/tip.service";
+import { DataService } from "./services/data.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { OrderComponent } from './order/order.component';
       HttpClientModule,
       AppRoutingModule
   ],
-  providers: [DatePipe,HomeComponent,AppComponent],
+  providers: [DatePipe,HomeComponent,AppComponent,ChatService,WebsocketService,TipService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,80 @@
-<p>
-  order works!
-</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div>
+    <h1>
+        Dienst web
+    </h1>
+
+<div class="container">
+
+        <div class="container left ">
+            <p>Id:{{this.order.orderId}}</p>
+            <p>Locatie:{{this.order.orderLocation}}</p>
+            <p>Beschrijving:{{this.order.orderTitle}}</p>
+
+        </div>
+        <div class="container center ">
+            <p>Tips:</p>
+
+        </div>
+        <div class="container right ">
+            <p>Tips geven/afhandelen</p>
+
+
+
+
+        </div>
+
+</div>
+    <div class="container">
+        <div class=" container1 left">
+            <textarea ng-model="myTextarea" class="width height"></textarea>
+        </div>
+        <div class="container1 center ">
+            <textarea ng-model="myTextarea" class="width height"></textarea>
+        </div>
+        <div class="container1 right ">
+            <textarea ng-model="myTextarea" formControl="tipOrConclude" placeholder="Tips of afhandelen"
+                      class="width height form-control " name="tipOrCondule" id="tipOrConclude" #tipOrConclude></textarea>
+            <div>
+                <button class="btn btn-primary" (click)="concludeOrder()"> Afhandelen</button>
+                <button class="btn btn-danger" (click)="giveUpdate()"> Tip geven</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<style>
+    .width{
+        width: 100%;
+    }
+    .height{
+        height: 75%;
+        padding-bottom: 10px;
+    }
+
+    .container{
+        height: 14%;
+    }
+    .container1{
+        height: 50%;
+    }
+
+
+    .left, .center, .right {
+        float: left;
+        width: 32%;
+        border: 1px solid #CEDCEA;
+        padding: 5px;
+        height: 100%;
+
+
+
+    }
+
+    .container{ overflow: hidden;}
+</style>

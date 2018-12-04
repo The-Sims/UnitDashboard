@@ -10,22 +10,16 @@ import {HomeComponent} from "../home/home.component";
 import {AppComponent} from "../app.component";
 
 
-const CHAT_URL = 'ws:/145.93.113.9:8095/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws:/localhost:8099/unitmanagerserver/websocket/';
 
 
-@Injectable({
-    providedIn: 'root'
-
-})
+@Injectable()
 export class ChatService {
-    public messages: Subject<EncapsulatingMessage>;
-    private ws :WebsocketService;
-    //private home:HomeComponent;
-    private  app:AppComponent;
-    constructor() {
-        this.messages = new Subject<EncapsulatingMessage>();
-            this.ws = new WebsocketService();
+     public  messages: Subject<EncapsulatingMessage>;
 
+    constructor(private ws:WebsocketService) {
+        console.log("new chat service")
+        this.messages = new Subject<EncapsulatingMessage>();
             this.messages = <Subject<EncapsulatingMessage>>this.ws
                 .connect(CHAT_URL)
                 .map((response: MessageEvent): EncapsulatingMessage => {
@@ -47,8 +41,7 @@ export class ChatService {
     }
 
 
-
-    }
+}
 
 
 
