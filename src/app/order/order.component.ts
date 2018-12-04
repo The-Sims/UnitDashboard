@@ -45,7 +45,7 @@ export class OrderComponent implements OnInit {
 
   giveUpdate(tip:string){
     let obj= new MessageTip(tip,this.order.orderLocation)
-      this.chat.sendMsg(obj);
+      this.tip.sendMsg(obj);
   }
 
   getUpdate(){

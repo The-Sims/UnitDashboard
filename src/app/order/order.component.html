@@ -4,7 +4,7 @@
         Dienst web
     </h1>
 
-<div class="container">
+    <div class="container">
 
         <div class="container left ">
             <p>Id:{{this.order.orderId}}</p>
@@ -18,26 +18,25 @@
         </div>
         <div class="container right ">
             <p>Tips geven/afhandelen</p>
-
-
-
-
         </div>
 
-</div>
+    </div>
     <div class="container">
-        <div class=" container1 left">
-            <textarea ng-model="myTextarea" class="width height"></textarea>
+        <div class=" container left ">
+            <textarea ng-model="myTextarea" formControl="beschrijving" placeholder="Beschrijving"
+                      class="width height " name="Beschrijving" id="beschrijving" #Tips></textarea>
         </div>
-        <div class="container1 center ">
-            <textarea ng-model="myTextarea" class="width height"></textarea>
+        <div class="container center ">
+            <textarea ng-model="myTextarea" formControl="tips" placeholder="Tips" class="width height "
+                      name="Tips" id="tips" #Tips></textarea>
         </div>
-        <div class="container1 right ">
+        <div class="container right ">
             <textarea ng-model="myTextarea" formControl="tipOrConclude" placeholder="Tips of afhandelen"
-                      class="width height form-control " name="tipOrCondule" id="tipOrConclude" #tipOrConclude></textarea>
+                      class="width height " name="tipOrCondule" id="tipOrConclude"
+                      #tipOrConclude></textarea>
             <div>
-                <button class="btn btn-primary" (click)="concludeOrder()"> Afhandelen</button>
-                <button class="btn btn-danger" (click)="giveUpdate()"> Tip geven</button>
+                <button class="btn btn-primary" (click)="concludeOrder(tipOrConclude.value)"> Afhandelen</button>
+                <button class="btn btn-danger" (click)="giveUpdate(tipOrConclude.value)"> Tip geven</button>
             </div>
         </div>
 
@@ -45,25 +44,22 @@
     </div>
 
 
-
 </div>
 
 <style>
-    .width{
+    .width {
         width: 100%;
     }
-    .height{
+
+    .height {
         height: 75%;
         padding-bottom: 10px;
     }
 
-    .container{
+    .container {
         height: 14%;
-    }
-    .container1{
-        height: 50%;
-    }
 
+    }
 
     .left, .center, .right {
         float: left;
@@ -72,9 +68,9 @@
         padding: 5px;
         height: 100%;
 
-
-
     }
 
-    .container{ overflow: hidden;}
+    .container {
+        overflow: hidden;
+    }
 </style>
