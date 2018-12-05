@@ -21,16 +21,25 @@
         </div>
 
     </div>
-    <div class="container">
-        <div class=" container left ">
+    <div class="col-container">
+        <div  class="  left ">
             <textarea ng-model="myTextarea" formControl="beschrijving" placeholder="Beschrijving"
                       class="width height " name="Beschrijving" id="beschrijving" #Tips></textarea>
         </div>
-        <div class="container center ">
-            <textarea ng-model="myTextarea" formControl="tips" placeholder="Tips" class="width height "
-                      name="Tips" id="tips" #Tips></textarea>
+        <div class=" center ">
+            <tbody *ngIf="tips != null">
+            <tr  *ngFor="let tip of tips">
+                <div class="container">
+                    {{tip.message}}}
+
+
+                </div>
+
+            </tr>
+
+            </tbody>
         </div>
-        <div class="container right ">
+        <div class=" right ">
             <textarea ng-model="myTextarea" formControl="tipOrConclude" placeholder="Tips of afhandelen"
                       class="width height " name="tipOrCondule" id="tipOrConclude"
                       #tipOrConclude></textarea>
@@ -59,6 +68,14 @@
     .container {
         height: 14%;
 
+    }
+    .col-container {
+        display: flex;
+        width: 100%;
+    }
+    .col {
+        flex: 1;
+        padding: 16px;
     }
 
     .left, .center, .right {

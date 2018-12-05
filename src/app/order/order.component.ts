@@ -10,6 +10,8 @@ import {MessageOrder} from "../../messages/MessageOrder";
 import {MessageConfirmOrder} from "../../messages/MessageConfirmOrder";
 import {MessageConcludeOrder} from "../../messages/MessageConcludeOrder";
 import {MessageTip} from "../../messages/MessageTip";
+import {MessageUpdateIncident} from "../../messages/MessageUpdateIncident";
+import {Tip} from "../models/Tip";
 
 @Component({
   selector: 'app-order',
@@ -20,22 +22,24 @@ import {MessageTip} from "../../messages/MessageTip";
 export class OrderComponent implements OnInit {
 
   public order:Order;
+  tips:Tip[]=[]
 
   constructor(private chat:ChatService,private tip:TipService,private router: Router,private  data:DataService) {
-      this.chat.messages.subscribe(msg => {
+      this.tip.tips.subscribe(msg => {
           console.log(msg.getMessageType)
           console.log(msg.getMessageData)
+          console.log("got tip message")
           this.switchComponent(msg);
       });
   }
 
     switchComponent(msg) {
         switch (msg.getMessageType) {
-            case "public class communication.messages.unitmessages.MessageOrder":
-                console.log("Me gotst an order");
-                let message = new MessageOrder(JSON.parse(msg.getMessageData));
 
-                //console.log(message.getIncidentTitle + ", " + message.getLocation + ", " + message.getOperatorId + ", " + message.getOrderId);
+            case"public class comminication.messages.sharedmessages.MessageUpdateIncident":
+                let messagetip = new MessageUpdateIncident(JSON.parse(msg.getMessageData));
+                console.log("bleh")
+                this.tips= messagetip.incident.tips
                 break;
             default:
                 console.log("rip");
@@ -48,9 +52,6 @@ export class OrderComponent implements OnInit {
       this.tip.sendMsg(obj);
   }
 
-  getUpdate(){
-
-  }
 
   concludeOrder(conclusion:string){
     let obj = new MessageConcludeOrder(this.order.orderId,conclusion);

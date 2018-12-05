@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {ChatService} from "../services/chat.service";
 import {MessageOrder} from "../../messages/MessageOrder";
 import {DataService} from "../services/data.service";
+import {TipService} from "../services/tip.service";
+import {MessageSubscribe} from "../../messages/MessageSubscribe";
 
 
 @Component({
@@ -16,7 +18,7 @@ import {DataService} from "../services/data.service";
 export class HomeComponent implements OnInit {
     orders: Order[] = [];
 
-    constructor(private chat: ChatService, private router: Router, private data: DataService) {
+    constructor(private tip:TipService, private chat: ChatService, private router: Router, private data: DataService) {
         this.chat.messages.subscribe(msg => {
             console.log(msg.getMessageType)
             console.log(msg.getMessageData)
@@ -59,8 +61,10 @@ export class HomeComponent implements OnInit {
 
     AcceptOrder(order: Order) {
         this.data.changeOrder(order);
-        this.router.navigate(['/Order', order]);
+        this.router.navigate(['/Order']);
         order.accepted = true;
+        let tipObj= new MessageSubscribe(order.orderId)
+        this.tip.sendMsg(tipObj)
         let obj = new MessageConfirmOrder(order.operaterId, order.orderId, "Accepted.", true);
         this.chat.sendMsg(obj)
     }

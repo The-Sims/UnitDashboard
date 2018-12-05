@@ -8,16 +8,17 @@ import {MessageOrder} from "../../messages/MessageOrder";
 import {Order} from "../models/Order";
 import {HomeComponent} from "../home/home.component";
 import {AppComponent} from "../app.component";
+import {WebsocketTipService} from "./websocket-tip.service";
 
 
-const CHAT_URL = 'ws:/localhost:8099/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws:/145.93.113.43:8095/unitmanagerserver/websocket/';
 
 
 @Injectable()
 export class ChatService {
      public  messages: Subject<EncapsulatingMessage>;
 
-    constructor(private ws:WebsocketService) {
+    constructor(private ws:WebsocketTipService) {
         console.log("new chat service")
         this.messages = new Subject<EncapsulatingMessage>();
             this.messages = <Subject<EncapsulatingMessage>>this.ws

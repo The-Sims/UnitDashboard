@@ -4,13 +4,13 @@ import {Subject} from "rxjs";
 import {WebsocketService} from "./websocket.service";
 
 
-const CHAT_URL = 'ws:/localhost:8100/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws:/145.93.113.43:8090/analyserserver/websocket/';
 @Injectable()
 export class TipService {
     public  tips: Subject<EncapsulatingMessage>;
   constructor(private ws:WebsocketService) {
 
-      console.log("new chat service")
+      console.log("new tip service")
       this.tips = new Subject<EncapsulatingMessage>();
       this.tips = <Subject<EncapsulatingMessage>>this.ws
           .connect(CHAT_URL)
