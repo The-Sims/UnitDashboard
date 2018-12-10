@@ -11,7 +11,7 @@ import {AppComponent} from "../app.component";
 import {WebsocketTipService} from "./websocket-tip.service";
 
 
-const CHAT_URL = 'ws:/145.93.113.43:8095/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws:/145.93.112.214:8095/unitmanagerserver/websocket/';
 
 
 @Injectable()

@@ -4,7 +4,7 @@ export  class MessageTip{
         this.message = message;
         this.location = location;
     }
-    private origin:string="Dienst";
+    private origin:string="DIENST";
     private sender:string="Dienst";
     private message:string;
     private location:string;

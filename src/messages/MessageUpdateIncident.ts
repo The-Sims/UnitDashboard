@@ -12,4 +12,8 @@ export class MessageUpdateIncident {
     get incident(): Incident {
         return this._incident;
     }
+
+    set incident(value: Incident) {
+        this._incident = value;
+    }
 }

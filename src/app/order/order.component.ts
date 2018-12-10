@@ -12,56 +12,65 @@ import {MessageConcludeOrder} from "../../messages/MessageConcludeOrder";
 import {MessageTip} from "../../messages/MessageTip";
 import {MessageUpdateIncident} from "../../messages/MessageUpdateIncident";
 import {Tip} from "../models/Tip";
+import {Incident} from "../models/Incident";
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+    selector: 'app-order',
+    templateUrl: './order.component.html',
+    styleUrls: ['./order.component.css']
 })
 
 export class OrderComponent implements OnInit {
 
-  public order:Order;
-  tips:Tip[]=[]
+    public order: Order;
+    tips: Tip[] = []
 
-  constructor(private chat:ChatService,private tip:TipService,private router: Router,private  data:DataService) {
-      this.tip.tips.subscribe(msg => {
-          console.log(msg.getMessageType)
-          console.log(msg.getMessageData)
-          console.log("got tip message")
-          this.switchComponent(msg);
-      });
-  }
+    constructor(private chat: ChatService, private tip: TipService, private router: Router, private  data: DataService) {
+        this.tip.tips.subscribe(msg => {
+            console.log(msg.getMessageType)
+            console.log(msg.getMessageData)
+            console.log("got tip message")
+            this.switchComponent(msg);
+        });
+    }
 
     switchComponent(msg) {
         switch (msg.getMessageType) {
 
-            case"public class comminication.messages.sharedmessages.MessageUpdateIncident":
+            case"public class communication.messages.sharedmessages.MessageUpdateIncident":
                 let messagetip = new MessageUpdateIncident(JSON.parse(msg.getMessageData));
                 console.log("bleh")
-                this.tips= messagetip.incident.tips
+                this.getUpdate(messagetip.incident)
+                //this.tips= messagetip.incident.tips
                 break;
             default:
-                console.log("rip");
+                console.log(msg.getMessageType);
                 break;
         }
     }
 
-  giveUpdate(tip:string){
-    let obj= new MessageTip(tip,this.order.orderLocation)
-      this.tip.sendMsg(obj);
-  }
+    giveUpdate(input: HTMLInputElement) {
+        let obj = new MessageTip(input.value, this.order.orderLocation)
+        this.tip.sendMsg(obj);
+        input.value = ''
+    }
 
 
-  concludeOrder(conclusion:string){
-    let obj = new MessageConcludeOrder(this.order.orderId,conclusion);
-      this.chat.sendMsg(obj)
-      this.router.navigate(['/Home']);
+    concludeOrder(input: HTMLInputElement) {
+        let obj = new MessageConcludeOrder(this.order.orderId, input.value);
+        this.chat.sendMsg(obj)
+        this.router.navigate(['/Home']);
+        input.value = ''
 
-  }
+    }
 
-  ngOnInit() {
-  this.order=this.data.getORder()
-  }
+    getUpdate(incident: Incident) {
+        this.tips = []
+        this.tips = incident.tips
+    }
+
+    ngOnInit() {
+        this.order = this.data.getORder()
+    }
 
 }
