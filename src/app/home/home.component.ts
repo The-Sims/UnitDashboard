@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Order} from "../models/Order";
 import {MessageConfirmOrder} from "../../messages/MessageConfirmOrder";
 import {Router} from "@angular/router";
-import {ChatService} from "../services/chat.service";
+import {OrderService} from "../services/order.service";
 import {MessageOrder} from "../../messages/MessageOrder";
 import {DataService} from "../services/data.service";
 import {TipService} from "../services/tip.service";
@@ -18,10 +18,8 @@ import {MessageSubscribe} from "../../messages/MessageSubscribe";
 export class HomeComponent implements OnInit {
     orders: Order[] = [];
 
-    constructor(private tip:TipService, private chat: ChatService, private router: Router, private data: DataService) {
+    constructor(private tip:TipService, private chat: OrderService, private router: Router, private data: DataService) {
         this.chat.messages.subscribe(msg => {
-            console.log(msg.getMessageType)
-            console.log(msg.getMessageData)
             this.switchComponent(msg);
         });
         this.startTimer();
@@ -31,13 +29,15 @@ export class HomeComponent implements OnInit {
     switchComponent(msg) {
         switch (msg.getMessageType) {
             case "public class communication.messages.unitmessages.MessageOrder":
-                console.log("Me gotst an order");
                 let message = new MessageOrder(JSON.parse(msg.getMessageData));
                 this.addOrders(new Order(message.getOrderId, message.getOperatorId, message.getIncidentTitle, message.getLocation))
                 //console.log(message.getIncidentTitle + ", " + message.getLocation + ", " + message.getOperatorId + ", " + message.getOrderId);
                 break;
+            case 'public class communication.messages.operatormessages.MessageConnectAsOperator':
+                console.log('pong order');
+                break;
             default:
-                console.log("rip");
+                console.log("rip"+msg.getMessageType);
                 break;
         }
     }
@@ -88,7 +88,6 @@ export class HomeComponent implements OnInit {
 
 
     addOrders(order: Order) {
-        console.log(order)
         this.orders.push(order);
     }
 

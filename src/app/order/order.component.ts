@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {ChatService} from "../services/chat.service";
+import {OrderService} from "../services/order.service";
 import {TipService} from "../services/tip.service";
 import {Router} from "@angular/router";
 import {ActivatedRoute} from '@angular/router';
@@ -25,11 +25,8 @@ export class OrderComponent implements OnInit {
     public order: Order;
     tips: Tip[] = []
 
-    constructor(private chat: ChatService, private tip: TipService, private router: Router, private  data: DataService) {
+    constructor(private chat: OrderService, private tip: TipService, private router: Router, private  data: DataService) {
         this.tip.tips.subscribe(msg => {
-            console.log(msg.getMessageType)
-            console.log(msg.getMessageData)
-            console.log("got tip message")
             this.switchComponent(msg);
         });
     }
@@ -39,11 +36,14 @@ export class OrderComponent implements OnInit {
 
             case"public class communication.messages.sharedmessages.MessageUpdateIncident":
                 let messagetip = new MessageUpdateIncident(JSON.parse(msg.getMessageData));
-                console.log("bleh")
                 this.getUpdate(messagetip.incident)
                 //this.tips= messagetip.incident.tips
                 break;
+            case 'public class communication.messages.operatormessages.MessageConnectAsOperator':
+                console.log('pong tip');
+                break;
             default:
+                console.log("RIP");
                 console.log(msg.getMessageType);
                 break;
         }

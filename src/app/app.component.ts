@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ChatService} from "./services/chat.service";
+import {OrderService} from "./services/order.service";
 
 
 
@@ -10,7 +10,7 @@ import {ChatService} from "./services/chat.service";
 
 })
 export class AppComponent {
-
+    title = 'DienstFrontApp';
     constructor() {
     }
 }

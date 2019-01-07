@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { DatePipe } from "@angular/common";
 import { AppRoutingModule } from "./app-routing.module";
 import { OrderComponent } from './order/order.component';
-import { ChatService } from "./services/chat.service";
+import { OrderService } from "./services/order.service";
 import { WebsocketService} from "./services/websocket.service";
 import { TipService } from "./services/tip.service";
 import { DataService } from "./services/data.service";
@@ -24,7 +24,7 @@ import { DataService } from "./services/data.service";
       HttpClientModule,
       AppRoutingModule
   ],
-  providers: [DatePipe,HomeComponent,AppComponent,ChatService,WebsocketService,TipService,DataService],
+  providers: [DatePipe,HomeComponent,AppComponent,OrderService,WebsocketService,TipService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

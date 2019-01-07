@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MessageRegister} from "../../messages/MessageRegister";
-import {ChatService} from "../services/chat.service";
+import {OrderService} from "../services/order.service";
 import {Router} from "@angular/router";
 
 
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private chat:ChatService,private router: Router) {
+    constructor(private chat:OrderService, private router: Router) {
 
     }
 
