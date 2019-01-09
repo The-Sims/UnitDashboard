@@ -5,7 +5,7 @@ import {WebsocketService} from "./websocket.service";
 import {MessageConnectAsOperator} from "../../messages/MessageConnectAsOperator";
 
 
-const CHAT_URL = 'ws:/145.93.112.226:8090/analyserserver/websocket/';
+const CHAT_URL = 'ws:/145.93.112.219:8090/analyserserver/websocket/';
 @Injectable()
 export class TipService {
     public  tips: Subject<EncapsulatingMessage>;

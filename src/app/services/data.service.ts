@@ -8,12 +8,22 @@ import {Order} from "../models/Order";
 @Injectable()
 export class DataService {
   private order:Order;
+  private id:string;
   constructor() { }
 
   changeOrder(order:Order){
     this.order = order;
   }
-  getORder(){
-    return this.order
+  getOrder(){
+    return this.order;
   }
+
+  changeId(id:string){
+    this.id =id;
+  }
+  getId(){
+    return this.id;
+  }
+
+
 }

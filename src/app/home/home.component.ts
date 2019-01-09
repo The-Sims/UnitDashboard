@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
     }
 
     AutoDeclineOrder(order: Order) {
-        let obj = new MessageConfirmOrder(order.operaterId, order.orderId, "Me GoTsT nO TiMe.", false);
+        let obj = new MessageConfirmOrder(order.operaterId, order.orderId, "Niet beschikbaar.", false);
         this.chat.sendMsg(obj)
     }
 
@@ -92,6 +92,13 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (this.data.getId()==null) {
+            this.router.navigate(['/Login']);
+        }
+        else {
+            console.log(this.data.getId())
+        }
+
 
     }
 

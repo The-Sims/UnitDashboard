@@ -70,7 +70,14 @@ export class OrderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.order = this.data.getORder()
+        this.order = this.data.getOrder()
+
+        if (this.data.getId()==null) {
+            this.router.navigate(['/Login']);
+        }
+        else {
+            console.log(this.data.getId())
+        }
     }
 
 }

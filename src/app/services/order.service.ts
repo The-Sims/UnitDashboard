@@ -12,7 +12,7 @@ import {WebsocketTipService} from "./websocket-tip.service";
 import {MessageConnectAsOperator} from "../../messages/MessageConnectAsOperator";
 
 
-const CHAT_URL = 'ws:/145.93.112.226:8095/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws:/145.93.112.219:8095/unitmanagerserver/websocket/';
 
 
 @Injectable()
