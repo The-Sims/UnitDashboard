@@ -12,7 +12,7 @@ import {WebsocketTipService} from "./websocket-tip.service";
 import {MessageConnectAsOperator} from "../../messages/MessageConnectAsOperator";
 
 
-const CHAT_URL = 'ws:/145.93.112.219:8095/unitmanagerserver/websocket/';
+const CHAT_URL = 'ws://145.93.112.245:8095/unitmanagerserver/websocket/';
 
 
 @Injectable()
@@ -28,7 +28,7 @@ export class OrderService {
             let obj = new MessageConnectAsOperator();
             $this.sendMsg(obj);
         };
-        console.log("new chat service")
+        console.log("new order service")
         this.messages = new Subject<EncapsulatingMessage>();
         this.messages = <Subject<EncapsulatingMessage>>this.ws
             .connect(CHAT_URL)

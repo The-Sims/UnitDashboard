@@ -1,34 +1,37 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div>
-
-
-    <div class="container">
+    <div class="container,center">
         <div class="row">
-            <div class="col-sm-3" flex>Id:</div>
-            <div class="col-sm-3" flex>Locatie:</div>
-            <div class="col-sm-3" flex>Beschrijving:</div>
-            <div class="col-sm-3" flex>Actie:</div>
+            <div class="col-sm-1" style="background-color:#ccc;">
+                <h2>Locatie:</h2>
+                <tbody *ngIf="orders != null">
+                <tr *ngFor="let order of orders">
+                    <div class="col-sm-3" flex style="height: 20px; margin-bottom: 5px;"> {{order.orderLocation}}</div>
+                </tr>
+                </tbody>
+            </div>
 
+            <div class="col-sm-9" style="background-color:#bbb;">
+                <h2>Beschrijving:</h2>
+                <tbody *ngIf="orders != null">
+                <tr *ngFor="let order of orders">
+                    <div class="col-sm-70" flex style="height: 20px;margin-bottom: 5px;">{{order.orderTitle}}</div>
+                </tr>
+                </tbody>
+            </div>
+            <div class="col-sm-2" style="background-color:#aaa;">
+                <h2>Actie:</h2>
+                <tbody *ngIf="orders != null" >
+                <tr *ngFor="let order of orders">
+                    <button class="btn btn-primary" (click)="AcceptOrder(order)" style="height: 25px"> Accpteren</button>
+                    <button class="btn btn-danger" (click)="DeclineOrder(order)" style="margin-left: 20px; height: 25px;">Afwijzen</button>
+                </tr>
+                </tbody>
+            </div>
         </div>
     </div>
 
 </div>
 
-<tbody *ngIf="orders != null">
 
-<tr *ngFor="let order of orders">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3" flex>{{order.orderId}}</div>
-            <div class="col-sm-3" flex>{{order.orderLocation}}</div>
-            <div class="col-sm-3" flex>{{order.orderTitle}}</div>
-            <div class="col-sm-3" flex>
-                <button class="btn btn-primary" (click)="AcceptOrder(order)"> Accpteren</button>
-                <button class="btn btn-danger" (click)="DeclineOrder(order)" style="margin-left: 20px;"> Afwijzen
-                </button>
-            </div>
-        </div>
-    </div>
-</tr>
-</tbody>
 

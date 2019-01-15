@@ -1,8 +1,12 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div style="text-align: center">
   <h1>
-    Dienst web
-  </h1>
-  <input formControl="email" placeholder="Username" class="form-control" name="email" id="email" required #email>
+  Dienst web
+</h1>
+  <div >
+    <input formControl="email" placeholder="Username" class="form-control" name="email" id="email" required #email>
+  </div>
 
-  <button type="submit" (click)="sendLogin(email.value)"> Login</button>
+
+  <button class="btn btn-primary" type="submit" (click)="sendLogin(email.value)"> Login</button>
 </div>
